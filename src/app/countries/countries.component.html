@@ -1,0 +1,6 @@
+<div>
+<select (change)="onCountryChanged($event)">
+  <option>SELECT</option>
+  <option *ngFor="let country of countries" [value]="country.countryId">{{country.name}}</option>
+</select>
+</div>

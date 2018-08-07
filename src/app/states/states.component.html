@@ -1,0 +1,4 @@
+<select (change)="onStateSelected($event)">
+  <option>SELECT</option>
+  <option *ngFor="let state of states" [value]="state.stateId">{{state.name}}</option>
+</select>

@@ -3,13 +3,17 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
+import { CountriesComponent } from './countries/countries.component';
+import { StatesComponent } from './states/states.component';
+import { CitiesComponent } from './cities/cities.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent
+    CountriesComponent,
+    StatesComponent,
+    CitiesComponent
   ],
   imports: [
     BrowserModule

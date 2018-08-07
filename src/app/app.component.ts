@@ -1,5 +1,6 @@
+import { City } from './models/city.model';
 import { Component } from '@angular/core';
-import { Book } from './models/book.model';
+import { State } from './models/state.model';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,43 @@ import { Book } from './models/book.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   
-  book1 : Book = {
-    code: '1001',
-    author: 'John Skeet',
-    name: 'C# in Depth',
-    thumbnail: 'data:image/jpeg;base64,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'
-  };
-  book2 : Book = {
-    code: '1002',
-    author: 'Andrew Stellman',
-    name: 'Head First C#',
-    thumbnail: 'https://books.google.co.in/books/content?id=_cWDAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71g_Ax8GjtlzHO4oRSs_ahQcMJL3ehS5uGdb_Gr1YRz_adtffmJJilBrkFNjI5RNQdvgVSwUIymOHOB2FfIXXoeWzwII-8EfN60NHFu0zNSMRqXkDSzawOKUOXJBKNh3SgqejCE'
-  };
-  books: Book[] = [this.book1, this.book2];
+countries = [
+    {  name: 'USA',  countryId: 1}, 
+    {  name: 'India',  countryId: 2}
+  ];
+
+  states: State[];
+  cities: City[];
+
+  onCountrySelected(countryId){
+    this.states = [
+      {name: "Delhi", countryId: 2, stateId: 1},
+      {name: "Goa", countryId: 2, stateId: 2},
+      {name: "AP", countryId: 2, stateId: 3},
+      {name: "TG", countryId: 2, stateId: 4},
+      {name: "MH", countryId: 2, stateId: 5},
+      {name: "Illinois", countryId: 1, stateId: 6},
+      {name: "California", countryId: 1, stateId: 7},
+      {name: "Missori", countryId: 1, stateId:8}
+    ].filter(item => item.countryId == countryId);
+    }
+
+    onStateSelected(selectedState){
+      this.cities =[
+        {name: "Delhi", stateId:1},
+        {name: "Goa", stateId:2},
+        {name: "Tirupati", stateId:3},
+        {name: "Vizag", stateId:3},
+        {name: "Hyderabad", stateId:4},
+        {name: "Warangal", stateId:4},
+        {name: "Mumbai", stateId:5},
+        {name: "Pune", stateId:5},
+        {name: "Naperville", stateId:6},
+        {name: "Chicago", stateId:6},
+        {name: "O'Fallen", stateId:8},
+        {name: "St. Luious", stateId:8},
+        {name: "Los Angeles", stateId:7},
+        {name: "San Fransisco", stateId:7},
+      ].filter(item => item.stateId == selectedState);
+    }
 }

@@ -1,3 +1,13 @@
-<div id="booksDiv">
-  <app-book *ngFor="let book of books" [book]='book'></app-book>
-</div>
+
+<form class="form-horizontal" action="/action_page.php">
+  <div class="form-group">
+    <div class="col-sm-10">
+      <h3>Countries:</h3>
+      <app-countries [countries]="countries" (selectedCountry)="onCountrySelected($event)"  ></app-countries>
+      <h3>States:</h3>
+      <app-states  [states]="states" (selected)="onStateSelected($event)"></app-states>
+      <h3>Cities:</h3>
+      <app-cities [cities]="cities"></app-cities>
+    </div>
+  </div>
+</form>
